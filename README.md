@@ -1,8 +1,8 @@
-# RepoX
+# CodeAtlas
 
 > Transform any GitHub repository into an interactive learning experience.
 
-**Live Demo:** [https://main.repox.pages.dev](https://main.repox.pages.dev)
+**Live Demo:** Comming Soon
 
 ## Features
 
@@ -17,7 +17,6 @@
 
 - **Frontend:** TypeScript, Vite, D3.js
 - **AI:** Google Gemini API (via Cloudflare Worker)
-- **Hosting:** Cloudflare Pages + Workers
 - **APIs:** GitHub REST API, OSS Insight API
 
 ## Getting Started
@@ -25,7 +24,6 @@
 ### Prerequisites
 
 - [Bun](https://bun.sh/) (or Node.js)
-- Cloudflare account (for deployment)
 - Gemini API key
 
 ### Installation
@@ -43,31 +41,6 @@ cp .env.example .env
 # Edit .env with your configuration
 ```
 
-### Development
-
-```bash
-# Start frontend dev server
-bun run dev
-
-# Start worker locally (in another terminal)
-cd worker
-bun run dev
-```
-
-### Deployment
-
-```bash
-# Build frontend
-bun run build
-
-# Deploy to Cloudflare Pages
-npx wrangler pages deploy dist --project-name=repox
-
-# Deploy worker
-cd worker
-npx wrangler deploy
-```
-
 ## Environment Variables
 
 ### Frontend (.env)
@@ -76,11 +49,6 @@ npx wrangler deploy
 VITE_WORKER_URL=https://your-worker.workers.dev
 ```
 
-### Worker (wrangler.toml secret)
-
-```bash
-npx wrangler secret put GEMINI_API_KEY
-```
 
 ## Project Structure
 
@@ -93,18 +61,11 @@ repox/
 │   ├── components/       # UI components (FileTree, Graph)
 │   ├── services/         # API services (GitHub, Gemini)
 │   ├── state/            # State management
-│   └── types/            # TypeScript type definitions
-├── worker/               # Cloudflare Worker (Gemini API proxy)
+│   └── types/            # TypeScript type definitions              # Cloudflare Worker (Gemini API proxy)
 ├── public/               # Static assets
 ├── dist/                 # Production build output
 ├── index.html            # HTML entry point
 └── package.json
 ```
 
-## License
-
-MIT
-
 ---
-
-Built for **Hacks for Hackers 2026** | Powered by Gemini, Cloudflare

@@ -1,4 +1,4 @@
-// RepoX - Main Entry Point
+// CodeAtlas - Main Entry Point
 import './style.css';
 import './app.css';
 import {
@@ -41,12 +41,15 @@ import {
 
 // ASCII Art for the landing page
 const ASCII_ART = `
-    ____                  _  __
-   / __ \\___  ____  ____ | |/ /
-  / /_/ / _ \\/ __ \\/ __ \\|   / 
- / _, _/  __/ /_/ / /_/ /   |  
-/_/ |_|\\___/ .___/\\____/_/|_|  
-          /_/                  
+  /$$$$$$                  /$$            /$$$$$$    /$$     /$$                    
+ /$$__  $$                | $$           /$$__  $$  | $$    | $$                    
+| $$  \__/  /$$$$$$   /$$$$$$$  /$$$$$$ | $$  \ $$ /$$$$$$  | $$  /$$$$$$   /$$$$$$$
+| $$       /$$__  $$ /$$__  $$ /$$__  $$| $$$$$$$$|_  $$_/  | $$ |____  $$ /$$_____/
+| $$      | $$  \ $$| $$  | $$| $$$$$$$$| $$__  $$  | $$    | $$  /$$$$$$$|  $$$$$$ 
+| $$    $$| $$  | $$| $$  | $$| $$_____/| $$  | $$  | $$ /$$| $$ /$$__  $$ \____  $$
+|  $$$$$$/|  $$$$$$/|  $$$$$$$|  $$$$$$$| $$  | $$  |  $$$$/| $$|  $$$$$$$ /$$$$$$$/
+ \______/  \______/  \_______/ \_______/|__/  |__/   \___/  |__/ \_______/|_______/ 
+                                                                                                                                                                                  
 `;
 
 /**
@@ -62,8 +65,8 @@ function renderHeader(): string {
     <header class="header">
       <div class="header-content">
         <div class="logo" ${state.view === 'repo' ? 'id="back-to-home" style="cursor: pointer"' : ''}>
-          <span class="logo-icon">&gt;_</span>
-          <span>RepoX</span>
+          <img src="/image.png" alt="logo" class="logo-icon" style="height: 32px; width: 32px; object-fit: contain;" />
+          <span>CodeAtlas</span>
         </div>
         <div class="header-right">
           ${progress.totalXP > 0 ? `
@@ -314,7 +317,7 @@ function renderWelcomePanel(): string {
       <div id="learning-path-container"></div>
       
       <div class="getting-started">
-        <h4>How to use RepoX</h4>
+        <h4>How to use CodeAtlas</h4>
         <ol class="getting-started-list">
           <li><strong>Browse files</strong> — Use the tree and graph view on the left to explore the repository structure</li>
           <li><strong>Generate a learning path</strong> — Click the button above to get an AI-curated learning journey</li>
