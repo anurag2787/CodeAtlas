@@ -237,7 +237,7 @@ function renderRepoView(): string {
   if (!state.fileTree) return '';
   
   // Get current tab from localStorage or default to 'tree'
-  const currentTab = localStorage.getItem('repox_view_tab') || 'tree';
+  const currentTab = localStorage.getItem('CodeAtlas_view_tab') || 'tree';
   
   return `
     <div class="repo-view ${currentTab === 'graph' ? 'graph-mode' : ''}">
@@ -337,7 +337,7 @@ function renderFilePanel(): string {
   const file = getState().selectedFile;
   if (!file) return '';
   
-  const eli5Enabled = localStorage.getItem('repox_eli5') === 'true';
+  const eli5Enabled = localStorage.getItem('CodeAtlas_eli5') === 'true';
   
   return `
     <div class="file-panel">
@@ -388,7 +388,7 @@ function render(): void {
   const state = getState();
 
   // Inject dynamic styles
-  const styleId = 'repox-dynamic-styles';
+  const styleId = 'CodeAtlas-dynamic-styles';
   let styleEl = document.getElementById(styleId) as HTMLStyleElement;
   if (!styleEl) {
     styleEl = document.createElement('style');
@@ -455,7 +455,7 @@ function attachEventListeners(): void {
     loadTrendingRepos();
   } else {
     // Repo view listeners
-    const currentTab = localStorage.getItem('repox_view_tab') || 'tree';
+    const currentTab = localStorage.getItem('CodeAtlas_view_tab') || 'tree';
     
     // Always attach file tree listeners (sidebar is always visible)
     attachFileTreeListeners();
@@ -475,7 +475,7 @@ function attachEventListeners(): void {
         const tab = (e.target as HTMLElement).dataset.tab;
         if (tab) {
           cleanupGraph();
-          localStorage.setItem('repox_view_tab', tab);
+          localStorage.setItem('CodeAtlas_view_tab', tab);
           render();
         }
       });
@@ -503,7 +503,7 @@ function attachEventListeners(): void {
     const eli5Checkbox = document.getElementById('eli5-checkbox') as HTMLInputElement;
     if (eli5Checkbox) {
       eli5Checkbox.addEventListener('change', () => {
-        localStorage.setItem('repox_eli5', eli5Checkbox.checked.toString());
+        localStorage.setItem('CodeAtlas_eli5', eli5Checkbox.checked.toString());
       });
     }
     
@@ -650,7 +650,7 @@ async function handleExplain(): Promise<void> {
     const content = await fetchFileContent(repo.owner, repo.repo, file.path);
     
     // Check ELI5 mode
-    const eli5Enabled = localStorage.getItem('repox_eli5') === 'true';
+    const eli5Enabled = localStorage.getItem('CodeAtlas_eli5') === 'true';
     
     // Then call Gemini API
     const explanation = await explainFile({
@@ -790,7 +790,7 @@ async function handleGenerateLearningPath(): Promise<void> {
  * Save learning path to localStorage
  */
 function saveLearningPath(repoName: string, path: import('./services').LearningPath): void {
-  const key = `repox_learning_path_${repoName}`;
+  const key = `CodeAtlas_learning_path_${repoName}`;
   localStorage.setItem(key, JSON.stringify(path));
 }
 
@@ -798,7 +798,7 @@ function saveLearningPath(repoName: string, path: import('./services').LearningP
  * Get saved learning path from localStorage
  */
 function getSavedLearningPath(repoName: string): import('./services').LearningPath | null {
-  const key = `repox_learning_path_${repoName}`;
+  const key = `CodeAtlas_learning_path_${repoName}`;
   const saved = localStorage.getItem(key);
   if (saved) {
     try {
@@ -814,7 +814,7 @@ function getSavedLearningPath(repoName: string): import('./services').LearningPa
  * Get module completion state from localStorage
  */
 function getModuleCompletion(repoName: string): Record<number, boolean> {
-  const key = `repox_module_completion_${repoName}`;
+  const key = `CodeAtlas_module_completion_${repoName}`;
   const saved = localStorage.getItem(key);
   if (saved) {
     try {
@@ -832,7 +832,7 @@ function getModuleCompletion(repoName: string): Record<number, boolean> {
 function saveModuleCompletion(repoName: string, moduleIndex: number, completed: boolean): void {
   const completion = getModuleCompletion(repoName);
   completion[moduleIndex] = completed;
-  const key = `repox_module_completion_${repoName}`;
+  const key = `CodeAtlas_module_completion_${repoName}`;
   localStorage.setItem(key, JSON.stringify(completion));
 }
 
@@ -1539,10 +1539,10 @@ function clearChatHistory(): void {
 subscribe(() => render());
 
 // Listen for custom re-render events (from file tree)
-window.addEventListener('repox:rerender', () => render());
+window.addEventListener('CodeAtlas:rerender', () => render());
 
 // Listen for file selection from graph (update info without full re-render)
-window.addEventListener('repox:fileselected', ((e: CustomEvent) => {
+window.addEventListener('CodeAtlas:fileselected', ((e: CustomEvent) => {
   const file = e.detail.file;
   if (!file) return;
   

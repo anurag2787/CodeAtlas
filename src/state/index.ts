@@ -96,8 +96,8 @@ export function goToLanding(): void {
 // ============================================
 // Using localStorage directly to avoid SPA re-render issues
 
-const PROGRESS_KEY = 'repox_user_progress';
-const CHALLENGES_KEY = 'repox_challenges_cache';
+const PROGRESS_KEY = 'CodeAtlas_user_progress';
+const CHALLENGES_KEY = 'CodeAtlas_challenges_cache';
 
 export interface UserProgress {
   totalXP: number;

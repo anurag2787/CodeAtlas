@@ -13,7 +13,7 @@ import type {
 
 const GITHUB_API_BASE = 'https://api.github.com';
 const CACHE_DURATION_MS = 60 * 60 * 1000; // 1 hour
-const CACHE_KEY_PREFIX = 'repox_cache_';
+const CACHE_KEY_PREFIX = 'CodeAtlas_cache_';
 
 // Rate limit tracking
 let rateLimitInfo: RateLimitInfo = {
@@ -320,7 +320,7 @@ export interface TrendingRepo {
   url: string;
 }
 
-const TRENDING_CACHE_KEY = 'repox_trending';
+const TRENDING_CACHE_KEY = 'CodeAtlas_trending';
 const TRENDING_CACHE_DURATION = 1 * 60 * 60 * 1000; // 1 hour
 
 // OSS Insight API response type
@@ -412,7 +412,7 @@ export interface SavedRepo {
   savedAt: number;
 }
 
-const HISTORY_KEY = 'repox_history';
+const HISTORY_KEY = 'CodeAtlas_history';
 const MAX_HISTORY = 10;
 
 /**

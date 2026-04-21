@@ -166,7 +166,7 @@ export function attachFileTreeListeners(): void {
     if (type === 'folder') {
       toggleFolder(path);
       // Trigger re-render via custom event
-      window.dispatchEvent(new CustomEvent('repox:rerender'));
+      window.dispatchEvent(new CustomEvent('CodeAtlas:rerender'));
     } else if (type === 'file') {
       // Find the file node in the tree
       const fileNode = findNodeByPath(getState().fileTree, path);

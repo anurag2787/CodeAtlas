@@ -371,7 +371,7 @@ function findNodeByPath(root: FileNode | null, path: string): FileNode | null {
  */
 function updateFilePanel(file: FileNode): void {
   // Dispatch custom event that main.ts can listen for
-  window.dispatchEvent(new CustomEvent('repox:fileselected', { detail: { file } }));
+  window.dispatchEvent(new CustomEvent('CodeAtlas:fileselected', { detail: { file } }));
 }
 
 /**

@@ -57,7 +57,7 @@ GEMINI_API_KEY=your_gemini_api_key
 ## Project Structure
 
 ```
-repox/
+CodeAtlas/
 ├── src/
 │   ├── main.ts              # Main application entry point
 │   ├── style.css            # Base/global styles
