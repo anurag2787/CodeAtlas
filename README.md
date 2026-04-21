@@ -2,7 +2,7 @@
 
 > Transform any GitHub repository into an interactive learning experience.
 
-**Live Demo:** Coming Soon
+**Live Demo:** https://ca-codeatlas.vercel.app
 
 ## Features
 
